@@ -2,7 +2,7 @@
 // MARK: VARIABLES //
 // /////////////// //
 var money = 0.0 // Double car j'ai des centimes
-var barn = ["Milk":0, "Wheat":0, "Wool" : 0] //Déclaration du dictionnaire grange
+var barn = ["Milk":10, "Wheat":10, "Wool" : 10] //Déclaration du dictionnaire grange
 
 // /////////////// //
 // MARK: ACTIVITIES //
@@ -14,11 +14,23 @@ func displayBank (){
 
 func displayBarn(){
     print("Voici le contenu de la grange:"
-        + "\n- \(barn["Milk"]!) bidons de lait" //Force unwrap car c'est optionnel
+        + "\n- \(barn["Milk"]!) bidons de lait"
         + "\n- \(barn["Wheat"]!) bottes de blé"
         + "\n- \(barn["Wool"]!) pelotes de laine")
 }
 
+func feed(){
+    money -= 4
+    print("Vous avez nourri les animmaux")
+}
+func sell() {
+    money += Double(barn["Milk"]!) * 0.3 //Force unwrap car CONVERSION donc c'est optionnel
+    money += Double(barn["Wheat"]!) * 100
+    money += Double(barn["Wool"]!) * 0.5
+    
+    //videz la grange
+    barn = ["Milk":0, "Wheat":0, "Wool" : 0]
+}
 func addActivities(){
     print("Quelle activité souhaitez-vous ajouter?"
         + "\n1. J'ai nourri les animaux"
@@ -30,9 +42,9 @@ func addActivities(){
     if let answer = readLine(){
         switch(answer){
         case "1":
-            print("nourri")
+            feed()
         case "2":
-            print("vendu")
+            sell()
         case "3":
             print("trait")
         case "4":
@@ -51,6 +63,7 @@ func addActivities(){
 // ////////////////// //
 
 //Prompt options 1st level
+func interactMenu(){
 print("Que voulez-vous faire?"
     + "\n1. Enregistrez une nouvelle activité"
     + "\n2. Consultez ma banque"
@@ -68,4 +81,13 @@ if let choice = readLine(){ // Renvoie un optionnel donc j unwrap
             print("je ne comprends pas")
     }
     
+    }
+    
+}
+
+// ////////////////// //
+// MARK: INIT LOOP    //
+// ////////////////// //
+while true {
+    interactMenu()
 }
