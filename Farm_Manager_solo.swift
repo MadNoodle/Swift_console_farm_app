@@ -1,8 +1,5 @@
-//
-//  Farm_Manager_solo.swift
-//  
-//
-//  Created by Mathieu Janneau on 12/10/2017.
-//
-
-import Foundation
+//Prompt options 1st level
+print("Que voulez-vous faire?"
+    + "\n1. Enregistrez une nouvelle activité"
+    + "\n2. Connsultez ma banque"
+    + "\n3. Consultez ma grange")
