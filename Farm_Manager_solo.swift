@@ -14,9 +14,36 @@ func displayBank (){
 
 func displayBarn(){
     print("Voici le contenu de la grange:"
-        + "\n \(barn["Milk"]!) bidons de lait" //Force unwrap car c'est optionnel
-        + "\n \(barn["Wheat"]!) bottes de blé"
-        + "\n \(barn["Wool"]!) pelotes de laine")
+        + "\n- \(barn["Milk"]!) bidons de lait" //Force unwrap car c'est optionnel
+        + "\n- \(barn["Wheat"]!) bottes de blé"
+        + "\n- \(barn["Wool"]!) pelotes de laine")
+}
+
+func addActivities(){
+    print("Quelle activité souhaitez-vous ajouter?"
+        + "\n1. J'ai nourri les animaux"
+        + "\n2. J'ai vendu mes produits"
+        + "\n3. J'ai trait mes vaches"
+        + "\n4. J'ai moissoné"
+        + "\n5. J'ai tondu mes moutons")
+
+    if let answer = readLine(){
+        switch(answer){
+        case "1":
+            print("nourri")
+        case "2":
+            print("vendu")
+        case "3":
+            print("trait")
+        case "4":
+            print("moissoné")
+        case "5":
+            print("tondu")
+        default:
+            print("Je ne comprends pas votre réponse")
+        }
+    }
+
 }
 
 // ////////////////// //
@@ -32,7 +59,7 @@ print("Que voulez-vous faire?"
 if let choice = readLine(){ // Renvoie un optionnel donc j unwrap
     switch(choice){
         case "1":
-            print("Vous voulez ajouter une activité")
+            addActivities()
         case "2":
             displayBank()
         case "3":
