@@ -2,7 +2,7 @@
 // MARK: VARIABLES //
 // /////////////// //
 var money = 0.0 // Double car j'ai des centimes
-var barn = ["Milk":10, "Wheat":10, "Wool" : 10] //Déclaration du dictionnaire grange
+var barn = ["Milk":0, "Wheat":0, "Wool" : 0] //Déclaration du dictionnaire grange
 
 // /////////////// //
 // MARK: ACTIVITIES //
@@ -25,11 +25,20 @@ func feed(){
 }
 func sell() {
     money += Double(barn["Milk"]!) * 0.3 //Force unwrap car CONVERSION donc c'est optionnel
-    money += Double(barn["Wheat"]!) * 100
+    money += Double(barn["Wheat"]!) * 0.3
     money += Double(barn["Wool"]!) * 0.5
     
     //videz la grange
     barn = ["Milk":0, "Wheat":0, "Wool" : 0]
+}
+func harvest(){
+    barn["Wheat"]! += 100
+}
+func milk(){
+    barn["Milk"]! += 30
+}
+func wool(){
+    barn["Wool"]! += 20
 }
 func addActivities(){
     print("Quelle activité souhaitez-vous ajouter?"
@@ -46,11 +55,11 @@ func addActivities(){
         case "2":
             sell()
         case "3":
-            print("trait")
+            milk()
         case "4":
-            print("moissoné")
+            harvest()
         case "5":
-            print("tondu")
+            wool()
         default:
             print("Je ne comprends pas votre réponse")
         }
