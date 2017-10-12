@@ -31,15 +31,33 @@ func sell() {
     //videz la grange
     barn = ["Milk":0, "Wheat":0, "Wool" : 0]
 }
-func harvest(){
-    barn["Wheat"]! += 100
+
+//Recolter
+func harvest(quantity:Int){
+        barn["Wheat"]! += quantity
 }
-func milk(){
-    barn["Milk"]! += 30
+
+//Traire
+func milk(quantity:Int){
+    barn["Milk"]! += quantity
 }
-func wool(){
-    barn["Wool"]! += 20
+
+//Laine
+func wool(quantity:Int){
+    barn["Wool"]! += quantity
 }
+
+func askQuantity(goods:String) -> Int? {
+    print("Quelle quantité de \(goods) avez vous récolté?")
+    if let answerQuantity = readLine(){
+        if let nb = Int(answerQuantity){ //Conversion string->int donc optionnel
+            return nb
+        }
+    }
+    print("Je ne comprends pas")
+    return nil
+}
+
 func addActivities(){
     print("Quelle activité souhaitez-vous ajouter?"
         + "\n1. J'ai nourri les animaux"
@@ -55,14 +73,19 @@ func addActivities(){
         case "2":
             sell()
         case "3":
-            milk()
+            if let nb = askQuantity(goods:"Lait"){ // comme je retourne un optionnel dans la fonction j unwrap
+                milk(quantity:nb)}
+            
         case "4":
-            harvest()
+            if let nb = askQuantity(goods:"blé"){
+                harvest(quantity:nb)}
         case "5":
-            wool()
+            if let nb = askQuantity(goods:"laine"){
+                wool(quantity:nb)}
         default:
             print("Je ne comprends pas votre réponse")
         }
+        print("Super")
     }
 
 }
